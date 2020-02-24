@@ -3,18 +3,21 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-            jdk = tool name: 'JDK18'
-            env.JAVA_HOME = "${jdk}"
+              script {
 
-            echo "jdk installation path is: ${jdk}"
+                  jdk = tool name: 'JDK18'
+                  env.JAVA_HOME = "${jdk}"
 
-            // next 2 are equivalents
-            sh "${jdk}/bin/java -version"
+                  echo "jdk installation path is: ${jdk}"
 
-            // note that simple quote strings are not evaluated by Groovy
-            // substitution is done by shell script using environment
-            sh '$JAVA_HOME/bin/java -version'
-               sh "ant dist"
+                  // next 2 are equivalents
+                  sh "${jdk}/bin/java -version"
+
+                  // note that simple quote strings are not evaluated by Groovy
+                  // substitution is done by shell script using environment
+                  sh '$JAVA_HOME/bin/java -version'
+                     sh "ant dist"
+               }
             }
         }
         stage('Test') {
