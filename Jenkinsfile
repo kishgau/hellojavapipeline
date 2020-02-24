@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-    JAVA_HOME = 'true'
+    JAVA_HOME = '/usr/lib/jvm/java-8-openjdk-amd64/'
 }
     stages {
         stage('Build') {
