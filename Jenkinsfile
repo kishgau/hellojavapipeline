@@ -3,13 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-              ant {
-                 target('clean')
-                 target('dist')
-                 buildFile('build.xml')
-                 javaOpt('-Xmx1g')
-                 antInstallation('Ant 1.8')
-              }
+               sh "ant dist"
             }
         }
         stage('Test') {
