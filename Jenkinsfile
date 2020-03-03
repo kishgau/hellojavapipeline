@@ -11,6 +11,17 @@ pipeline {
                   sh "ant dist"
             }
         }
+	   stage('SonarQube analysis') {
+	      steps {
+	        script {
+	          // requires SonarQube Scanner 2.8+
+	          scannerHome = tool 'SonarQube Scanner 4.2'
+	        }
+	        withSonarQubeEnv('SonarQube Server') {
+	          sh "${scannerHome}/bin/sonar-scanner"
+	        }
+	      }
+	    }
         stage('Test') {
             steps {
                 echo "Test"
