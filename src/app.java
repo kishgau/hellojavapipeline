@@ -3,7 +3,7 @@ public class app {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("Hello AST:JIRA 1");
+		System.out.println("Hello AST:Test webhook");
 
 	}
 
