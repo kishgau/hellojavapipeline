@@ -3,9 +3,8 @@ pipeline {
     options { skipDefaultCheckout() }
     environment {
     JAVA_HOME = '/usr/lib/jvm/java-8-openjdk-amd64/'
-}
+     }
     stages {
-
         stage('Build') {
             steps {
                   sh '$JAVA_HOME/bin/java -version'
@@ -33,10 +32,12 @@ pipeline {
                 echo "Deploy"
             }
         }
-        stage('CleanWorkspace') {
-        steps {
-           cleanWs()
-        }
       }
-    }
+        post {
+          always {
+           cleanWs()
+         }
+       }
+
+
 }
