@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    options { skipDefaultCheckout() }
+
     environment {
     JAVA_HOME = '/usr/lib/jvm/java-8-openjdk-amd64/'
      }
