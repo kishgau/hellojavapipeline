@@ -1,10 +1,15 @@
 pipeline {
     agent any
-
+    options { skipDefaultCheckout() }
     environment {
     JAVA_HOME = '/usr/lib/jvm/java-8-openjdk-amd64/'
 }
     stages {
+        stage('CleanWorkspace') {
+        steps {
+           cleanWs()
+        }
+      }
         stage('Build') {
             steps {
                   sh '$JAVA_HOME/bin/java -version'
